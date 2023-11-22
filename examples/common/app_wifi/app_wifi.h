@@ -48,12 +48,17 @@ typedef enum {
     /** Do not use any PoP.
      * Use this option with caution. Consider using `CONFIG_APP_WIFI_PROV_TIMEOUT_PERIOD` with this.
      */
-    POP_TYPE_NONE
+    POP_TYPE_NONE,
+    /** Use a custom PoP.
+     * Set a custom PoP using app_wifi_set_custom_pop() first.
+     */
+    POP_TYPE_CUSTOM
 } app_wifi_pop_type_t;
 
 void app_wifi_init();
 esp_err_t app_wifi_start(app_wifi_pop_type_t pop_type);
 esp_err_t app_wifi_set_custom_mfg_data(uint16_t device_type, uint8_t device_subtype);
+esp_err_t app_wifi_set_custom_pop(const char *pop);
 
 #ifdef __cplusplus
 }
